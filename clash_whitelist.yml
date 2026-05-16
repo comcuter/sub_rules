@@ -41,13 +41,13 @@ custom:
         - "[]手工选择"
         - "[]自动选择"
         - "[]自动选择|香港"
-        - "[]自动选择|新加坡"
 
     - name: OpenAI
       type: select
       rule:
         - ".*"
         - "[]自动选择|新加坡"
+        - "[]自动选择|非香港"
 
     - name: 苹果相关
       type: select
@@ -72,7 +72,7 @@ custom:
       rule:
         - ".*"
       url: "http://www.gstatic.com/generate_204"
-      interval: 300
+      interval: 30
       tolerance: 100
 
     - name: "自动选择|香港"
@@ -80,7 +80,7 @@ custom:
       rule:
         - "(?i)(香港|hk|hong kong)"
       url: "http://www.gstatic.com/generate_204"
-      interval: 300
+      interval: 30
       tolerance: 100
 
     - name: "自动选择|新加坡"
@@ -88,7 +88,15 @@ custom:
       rule:
         - "(?i)(新加坡|狮城|sg|singapore)"
       url: "http://www.gstatic.com/generate_204"
-      interval: 300
+      interval: 30
+      tolerance: 100
+
+    - name: "自动选择|非香港"
+      type: url-test
+      rule:
+        - "(?i)^(?!.*(香港|hk|hong kong)).*$"
+      url: "http://www.gstatic.com/generate_204"
+      interval: 30
       tolerance: 100
 
     - name: 公司屏蔽
