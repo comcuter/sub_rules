@@ -35,10 +35,37 @@ custom:
       group: 无规则匹配
 
   proxy_groups:
+    - name: 代理
+      type: select
+      rule:
+        - "[]手工选择"
+        - "[]自动选择"
+        - "[]自动选择|香港"
+        - "[]自动选择|新加坡"
+
+    - name: OpenAI
+      type: select
+      rule:
+        - ".*"
+        - "[]自动选择|新加坡"
+
+    - name: 苹果相关
+      type: select
+      rule:
+        - ".*"
+        - "[]DIRECT"
+        - "[]代理"
+
     - name: 手工选择
       type: select
       rule:
         - ".*"
+
+    - name: 无规则匹配
+      type: select
+      rule:
+        - "[]代理"
+        - "[]DIRECT"
 
     - name: 自动选择
       type: url-test
@@ -69,32 +96,6 @@ custom:
       rule:
         - "[]DIRECT"
         - "[]代理"
-
-    - name: 苹果相关
-      type: select
-      rule:
-        - ".*"
-        - "[]DIRECT"
-        - "[]代理"
-
-    - name: OpenAI
-      type: select
-      rule:
-        - ".*"
-
-    - name: 无规则匹配
-      type: select
-      rule:
-        - "[]代理"
-        - "[]DIRECT"
-
-    - name: 代理
-      type: select
-      rule:
-        - "[]手工选择"
-        - "[]自动选择"
-        - "[]自动选择|香港"
-        - "[]自动选择|新加坡"
 
   rename_node:
     - match: "(?i)^(.*)(香港|hk|hong kong)(.*)$"
